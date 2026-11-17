@@ -1,1 +1,16 @@
-services: {}
+services:
+  postgres:
+    image: postgres:16
+    container_name: resume_ai_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: resume_ai_db
+      POSTGRES_USER: resume_ai_user
+      POSTGRES_PASSWORD: resume123
+    ports:
+      - "5433:5432"
+    volumes:
+      - resume_ai_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  resume_ai_postgres_data:
